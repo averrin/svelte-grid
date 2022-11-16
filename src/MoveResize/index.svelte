@@ -105,6 +105,8 @@
 
   export let nativeContainer;
 
+  export let offset;
+
   let shadowElement;
   let shadow = {};
 
@@ -189,6 +191,11 @@
 
     cordDiff = { x: 0, y: 0 };
     rect = target.closest(".svlt-grid-item").getBoundingClientRect();
+    rect = {top: rect.top, left: rect.left}
+    if (offset) {
+      rect.top += offset.top;
+      rect.left += offset.left;
+    }
 
     active = true;
     trans = false;
@@ -286,6 +293,11 @@
 
     cordDiff = { x: 0, y: 0 };
     rect = e.target.closest(".svlt-grid-item").getBoundingClientRect();
+    rect = {top: rect.top, left: rect.left}
+    if (offset) {
+      rect.top += offset.top;
+      rect.left += offset.left;
+    }
     newSize = { width, height };
 
     active = true;

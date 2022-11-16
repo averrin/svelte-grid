@@ -9,6 +9,7 @@
   {#if xPerPx || !fastStart}
     {#each items as item, i (item.id)}
       <MoveResize
+        {offset}
         on:repaint={handleRepaint}
         on:pointerup={pointerup}
         id={item.id}
@@ -60,6 +61,7 @@
 
   export let scroller = undefined;
   export let sensor = 20;
+  export let offset;
 
   let getComputedCols;
 
